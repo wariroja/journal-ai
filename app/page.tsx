@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { analyze } from "@/utils/ai"
+// import { analyze } from "@/utils/ai"
 
 export default function Home() {
   return (
@@ -19,8 +19,8 @@ export default function Home() {
   )
 }
 
-analyze(`I'm going to give you a journal entry, I want you to analyze it for a few things. I need the mood, a summary, what the subject is, and a color representing the mood. You need to respond back with formatted JSON like so: {"moode": ', "subject":"", "color": "", "negative": ""}.
+// analyze(`I'm going to give you a journal entry, I want you to analyze it for a few things. I need the mood, a summary, what the subject is, and a color representing the mood. You need to respond back with formatted JSON like so: {"mood": "", "subject":"", "color": "", "negative": ""}.
 
-entry:
-Today was a really great day. I finally was able to grab that pair of shoes I have been dying to get.
-`)
+// entry:
+// Today was a really great day. I finally was able to grab that pair of shoes I have been dying to get.
+// `)

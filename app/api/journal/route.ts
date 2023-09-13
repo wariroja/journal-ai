@@ -11,6 +11,6 @@ export const POST = async () => {
       content: 'Write about your day!'
     },
   })
-
+  revalidatePath('/journal')
   return NextResponse.json({ data: entry })
 }

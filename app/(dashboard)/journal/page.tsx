@@ -1,12 +1,11 @@
-import NewEntryCard from '@/components/ NewEntryCard'
-import EntryCard from '@/components/EntryCard'
+import NewEntryCard from '@/app/components/ NewEntryCard'
+import EntryCard from '@/app/components/EntryCard'
 import { getUserFromClerkID } from '@/utils/auth'
 import { prisma } from '@/utils/db'
 import Link from 'next/link'
 
 const getEntries = async () => {
   const user = await getUserFromClerkID()
-  console.log({user})
   const entries = await prisma.journalEntry.findMany({
     where: {
       userId: user.id,

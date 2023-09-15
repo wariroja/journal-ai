@@ -14,3 +14,18 @@ export const newEntry = async () => {
     throw new Error('Something went wrong on API server!')
   }
 }
+
+export const updateEntry = async (id, content) => {
+  const res = await fetch(
+    new Request(createURL(`/api/journal/${id}`), {
+      method: 'PATCH',
+      body: JSON.stringify({ content }),
+    })
+  )
+
+  if (res.ok) {
+    return res.json()
+  } else {
+    throw new Error('Something went wrong on API server!')
+  }
+}

@@ -1,4 +1,5 @@
 
+import { analyzeEntry } from '@/utils/ai'
 import { getUserFromClerkID } from '@/utils/auth'
 import { prisma } from '@/utils/db'
 import { NextResponse } from 'next/server'
@@ -7,7 +8,7 @@ import { NextResponse } from 'next/server'
 export const PATCH = async (request: Request, { params }) => {
   const { content } = await request.json()
   const user = await getUserFromClerkID()
-  const updateEntry = await prisma.journalEntry.update({
+  const updatedEntry = await prisma.journalEntry.update({
     where:{
       userId_id: {
         userId: user.id, 
@@ -19,5 +20,17 @@ export const PATCH = async (request: Request, { params }) => {
     }
   })
 
-  return NextResponse.json({ data: updateEntry })
+  const analysis = await analyzeEntry(updatedEntry.content)
+  const updated = await prisma.analysis.upsert({
+    where:{
+      entryId: updatedEntry.id,
+    },
+    create: {
+      entryId: updatedEntry.id,
+      ...analysis,
+    },
+    update: analysis,
+  })
+
+  return NextResponse.json({ data: updatedEntry, analysis: updated })
 }

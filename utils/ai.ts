@@ -60,16 +60,7 @@ export const analyzeEntry = async (content) => {
 
 
   console.log({input,output})
-  try {
     return parser.parse(output)
-  } catch (e) {
-    const fixParser = OutputFixingParser.fromLLM(
-      new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' }),
-      parser
-    )
-    const fix = await fixParser.parse(output)
-    return fix
-  }
 }
 
 export const qa = async (question, entries) => {

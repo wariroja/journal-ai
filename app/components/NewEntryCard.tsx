@@ -3,7 +3,7 @@
 import { newEntry } from '@/utils/api'
 import { useRouter } from 'next/navigation'
 
-const NewEntry = () => {
+const NewEntryCard = () => {
   const router = useRouter()
 
   const handleOnClick = async () => {
@@ -23,4 +23,4 @@ const NewEntry = () => {
   )
 }
 
-export default NewEntry
+export default NewEntryCard

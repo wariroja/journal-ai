@@ -1,4 +1,4 @@
-import NewEntryCard from '@/app/components/ NewEntryCard'
+import NewEntryCard from '@/app/components/NewEntryCard'
 import EntryCard from '@/app/components/EntryCard'
 import { getUserFromClerkID } from '@/utils/auth'
 import { prisma } from '@/utils/db'

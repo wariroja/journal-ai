@@ -10,6 +10,9 @@ const getEntry = async (id) => {
         userId: user.id, 
         id,
       }
+    },
+    include: { // join for SQL/MySQL
+      analysis: true
     }
   })
   return entry
@@ -18,11 +21,12 @@ const getEntry = async (id) => {
 
 const EntryPage = async ({ params }) => {
   const entry = await getEntry(params.id)
+  const { mood, summary, color, subject, negative } = entry?.analysis
   const analysisData = [
-    { name: 'Subject', value: ''},
-    { name: 'Color', value: ''},
-    { name: 'Mood', value: ''},
-    { name: 'Negative', value: 'false'},
+    { name: 'Summary', value: summary },
+    { name: 'Subject', value: subject },
+    { name: 'Mood', value: mood },
+    { name: 'Negative', value: negative ? "True" : "False" },
   ]
   return (
     <div className="h-full w-full grid grid-cols-3">
@@ -30,7 +34,7 @@ const EntryPage = async ({ params }) => {
         <Editor entry={entry}/>
       </div>
       <div className="border-1 border-black/10">
-        <div className="bg-blue-300 px-6 py10">
+        <div className="px-6 py10" style={{backgroundColor: color}} >
           <h2>Anaysis</h2>
         </div>
           <div>
@@ -38,6 +42,7 @@ const EntryPage = async ({ params }) => {
               {analysisData.map(item => (
                 <li key={item.name} className="flex items-center justify-between">
                   <span>{item.name}</span>
+                  <span>{item.value}</span>
                 </li>
               ))}
             </ul>

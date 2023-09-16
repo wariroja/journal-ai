@@ -3,6 +3,7 @@ import EntryCard from '@/app/components/EntryCard'
 import { getUserFromClerkID } from '@/utils/auth'
 import { prisma } from '@/utils/db'
 import Link from 'next/link'
+import { analyzeEntry } from '@/utils/ai'
 
 const getEntries = async () => {
   const user = await getUserFromClerkID()
@@ -14,7 +15,6 @@ const getEntries = async () => {
       createdAt: 'desc',
     },
   })
-
   return entries
 }
 

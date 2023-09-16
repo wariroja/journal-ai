@@ -17,14 +17,9 @@ export const POST = async () => {
   const analysis = await analyzeEntry(entry.content)
   await prisma.analysis.create({
     data: {
-      // entryId: entry.id,
+      userId: user.id, 
+      entryId: entry.id,
       ...analysis,
-    entry: {
-          connect: { id: entry.id }
-      },
-      user: {
-          connect: { id: user.id }
-      }
     }
   })
   revalidatePath('/journal')

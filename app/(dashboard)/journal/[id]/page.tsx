@@ -20,9 +20,9 @@ const EntryPage = async ({ params }) => {
   const entry = await getEntry(params.id)
   const analysisData = [
     { name: 'Subject', value: ''},
-    { name: 'Subject', value: ''},
+    { name: 'Color', value: ''},
     { name: 'Mood', value: ''},
-    { name: 'Negative', value: ''},
+    { name: 'Negative', value: 'false'},
   ]
   return (
     <div className="h-full w-full grid grid-cols-3">

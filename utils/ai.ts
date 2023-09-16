@@ -71,6 +71,8 @@ export const qa = async (question, entries) => {
         metadata: { source: entry.id, date: entry.createdAt },
       })
   )
+  console.log(docs);
+
   const model = new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' })
   const chain = loadQARefineChain(model)
   const embeddings = new OpenAIEmbeddings()

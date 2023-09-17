@@ -9,6 +9,5 @@ export const getUserFromClerkID = async () => {
       clerkId: userId,
     },
   })
-  console.log('yo')
   return user
 }

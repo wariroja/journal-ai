@@ -27,8 +27,7 @@ const createNewUser = async () => {
 }
 
 const NewUser = async () => {
-  const user = await createNewUser()
-  i
+  await createNewUser()
   return <div>...loading</div>
 }
 

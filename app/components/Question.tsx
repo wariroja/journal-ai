@@ -12,8 +12,6 @@ const Question = () => {
     setLoading(true)
 
     const { data } = await askQuestion(question)
-    console.log(data, 'data')
-
     setAnswer(data)
     setLoading(false)
     setQuestion('')

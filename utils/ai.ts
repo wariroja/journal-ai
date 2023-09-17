@@ -59,7 +59,6 @@ export const analyzeEntry = async (content) => {
   const output = await model.call(input)
 
 
-  console.log({input,output})
     return parser.parse(output)
 }
 
@@ -71,7 +70,6 @@ export const qa = async (question, entries) => {
         metadata: { source: entry.id, date: entry.createdAt },
       })
   )
-  console.log(docs);
 
   const model = new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' })
   const chain = loadQARefineChain(model)

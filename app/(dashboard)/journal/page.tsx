@@ -9,7 +9,7 @@ const getEntries = async () => {
   const user = await getUserFromClerkID()
   const entries = await prisma.journalEntry.findMany({
     where: {
-      userId: user.id,
+      userId: user?.id,
     },
     orderBy: {
       createdAt: 'desc',

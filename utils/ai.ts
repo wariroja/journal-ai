@@ -63,6 +63,7 @@ export const analyzeEntry = async (content) => {
 }
 
 export const qa = async (question, entries) => {
+  console.log(question, entries)
   const docs = entries.map(
     (entry) =>
       new Document({

@@ -10,7 +10,7 @@ export const POST = async (request) => {
   console.log(user, request)
   const entries = await prisma.journalEntry.findMany({
     where: {
-      userId: user.id,
+      userId: user?.id,
     },
     select: {
       id: true, 

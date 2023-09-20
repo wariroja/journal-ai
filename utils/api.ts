@@ -34,13 +34,18 @@ export const askQuestion = async (question) => {
   const res = await fetch(
     new Request(createURL(`/api/question`), {
       method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+    },
       body: JSON.stringify({ question }),
+      
     })
   )
 
   if (res.ok) {
-    return res.json()
+    return res.json();
   } else {
-    throw new Error('Something went wrong on API server!')
+    const errorData = await res.text();
+    throw new Error(`API server error: ${errorData}`);
   }
 }

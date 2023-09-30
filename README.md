@@ -1,6 +1,6 @@
 # Sunlit Stories: Your Personal Journal Analyzer
 
-Sunlit Stories is a unique project bootstrapped with `create-next-app` that provides a platform for users to analyze their journal entries. By leveraging technologies like Next.js, Langchain, Clerk Auth, Prisma, PlanetScale, and deploying on Vercel, this application not only offers a secure and robust environment for journaling but also enhances self-awareness through its analysis features.
+Sunlit Stories is a unique project built with Next.js that provides a platform for users to analyze their journal entries. By leveraging technologies like Next.js, Langchain, Clerk Auth, Prisma, PlanetScale, and deploying on Vercel, this application not only offers a secure and robust environment for journaling but also enhances self-awareness through its analysis features.
 
 ## Features
 

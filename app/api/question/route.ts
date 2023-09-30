@@ -2,6 +2,7 @@ import { qa } from '@/utils/ai'
 import { getUserFromClerkID } from '@/utils/auth'
 import { prisma } from '@/utils/db'
 import { NextResponse } from 'next/server'
+import {useUser} from "@clerk/nextjs";
 
 export const POST = async (request) => {
   const requestBody = await request.json();
@@ -9,7 +10,7 @@ export const POST = async (request) => {
   const user = await getUserFromClerkID()
   const entries = await prisma.journalEntry.findMany({
     where: {
-      userId: user?.id,
+      userId: user.id,
     },
     select: {
       id: true, 

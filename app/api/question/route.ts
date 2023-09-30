@@ -4,10 +4,9 @@ import { prisma } from '@/utils/db'
 import { NextResponse } from 'next/server'
 
 export const POST = async (request) => {
-  console.log(request.json())
-  const { question } = await request.json()
+  const requestBody = await request.json();
+  const { question } = requestBody;
   const user = await getUserFromClerkID()
-  console.log(user, request)
   const entries = await prisma.journalEntry.findMany({
     where: {
       userId: user?.id,
@@ -20,6 +19,7 @@ export const POST = async (request) => {
   })
 
   const answer = await qa(question, entries)
-  console.log(answer)
+
   return NextResponse.json({ data: answer })
 }
+

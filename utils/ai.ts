@@ -63,7 +63,6 @@ export const analyzeEntry = async (content) => {
 }
 
 export const qa = async (question, entries) => {
-  console.log(question, entries)
   const docs = entries.map(
     (entry) =>
       new Document({
@@ -71,11 +70,9 @@ export const qa = async (question, entries) => {
         metadata: { source: entry.id, date: entry.createdAt },
       })
   )
-      console.log(docs)
+
   const model = new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' })
-  console.log(model)
   const chain = loadQARefineChain(model)
-  console.log(chain)
   const embeddings = new OpenAIEmbeddings()
   const store = await MemoryVectorStore.fromDocuments(docs, embeddings)
   const relevantDocs = await store.similaritySearch(question)
@@ -83,7 +80,6 @@ export const qa = async (question, entries) => {
     input_documents: relevantDocs,
     question,
   })
-  console.log(res)
 
   return res.output_text
 }

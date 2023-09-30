@@ -5,6 +5,9 @@ export const newEntry = async () => {
     new Request(createURL('/api/journal'), {
       method: 'POST',
       body: JSON.stringify({ content: 'new entry' }),
+      headers: {
+      'Content-Type': 'application/json'
+    },
     })
   )
 
@@ -20,6 +23,9 @@ export const updateEntry = async (id, content) => {
     new Request(createURL(`/api/journal/${id}`), {
       method: 'PATCH',
       body: JSON.stringify({ content }),
+       headers: {
+      'Content-Type': 'application/json'
+    },
     })
   )
 
@@ -31,6 +37,7 @@ export const updateEntry = async (id, content) => {
 }
 
 export const askQuestion = async (question) => {
+
   const res = await fetch(
     new Request(createURL(`/api/question`), {
       method: 'POST',
